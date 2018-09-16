@@ -1,0 +1,20 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+h1 {
+  font-family: 'Lobster', cursive;
+}
+
+.navbar-brand {
+  font-family: 'Lobster', cursive;
+}
+
+.navbar{
+  -webkit-box-shadow: 9px 15px 58px -13px rgba(97,97,97,1);
+  -moz-box-shadow: 9px 15px 58px -13px rgba(97,97,97,1);
+  box-shadow: 9px 15px 58px -13px rgba(97,97,97,1);
+}
+
+table{
+   margin: 0 auto
+}

@@ -1,0 +1,99 @@
+<head>
+  <title>Alertify</title>
+  <script src="/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+  <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="/static/js/javascript.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/css.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Alertify</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/heartrate">Heart Rate<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/alerts">Alerts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/images">Images</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/videos">Videos</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+  <div class="container text-center">
+    <h1>Recent Updates</h1>
+    <div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+          {% for key, value in images[images.keys()|last].items() %}
+            {% if key == "rgb_url" %}
+            <p>RGB Image</p>
+            <img src=/static/{{value}}>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="col-xs-6">
+          {% for key, value in alerts[alerts.keys()|last].items() %}
+            {% if key == "reason" or key == "date" %}
+            <div class="card">
+              <div class="card-body">
+              {% if key == "reason" %}
+                <h5 class="card-title">Falling</h5>
+              {% endif %}
+              {% if key == "date" %}
+                <p class="card-text">Date: {{value}}</p>
+              {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+    </div>
+</div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="extreme_heartbeat" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          Your content goes here...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- hiii
+  <div id="heartrate">{{value}}</div>
+
+  <div id="status">
+    <div id="image"></div>
+    <div id="video"></div>
+    <div id=""></div>
+  </div> -->
+
+</body>
